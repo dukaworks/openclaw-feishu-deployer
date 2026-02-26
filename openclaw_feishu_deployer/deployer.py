@@ -433,3 +433,8 @@ if __name__ == "__main__":
         print(ERROR_ART)
         print_error(f"发生错误: {e}")
         sys.exit(1)
+
+# 为了兼容性，保留 main 函数名
+def cli_main():
+    """CLI 入口"""
+    main()
