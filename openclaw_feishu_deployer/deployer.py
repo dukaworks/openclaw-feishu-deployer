@@ -14,6 +14,14 @@ import requests
 from pathlib import Path
 from typing import Optional, Tuple
 
+# 导入版本号
+try:
+    from . import __version__
+except ImportError:
+    __version__ = "1.0.3"
+
+from . import __version__
+
 # 颜色代码 🎨
 class Colors:
     PINK = '\033[95m'
@@ -96,7 +104,9 @@ def print_warning(message: str):
 
 def cute_input(prompt: str) -> str:
     """可爱的输入提示"""
-    return input(f"{Colors.PINK}🎯 {prompt} {Colors.END}")
+    # 简化输入提示，避免颜色代码干扰
+    print(f"{Colors.PINK}🎯 {prompt}{Colors.END}", end=" ", flush=True)
+    return input()
 
 def loading_animation(duration: float = 1.5):
     """加载动画"""
