@@ -260,10 +260,11 @@ def collect_feishu_credentials() -> Optional[dict]:
 3. 进入「凭据管理」获取 App ID 和 App Secret
 4. 开通权限并发布应用
 
-{Colors.YELLOW}📖 详细教程: https://github.com/duka-works/openclaw-feishu-deployer{Colors.END}
+{Colors.YELLOW}📖 详细教程: https://github.com/dukaworks/openclaw-feishu-deployer{Colors.END}
     """)
     
     print(f"\n{Colors.GREEN}现在输入你的飞书应用凭证：{Colors.END}\n")
+    print(f"{Colors.DIM}提示：App ID 是公开标识符，App Secret 是密钥（输入时可见）{Colors.END}\n")
     
     app_id = cute_input("App ID: ").strip()
     app_secret = cute_input("App Secret: ").strip()
@@ -374,6 +375,24 @@ def save_config(credentials: dict):
 
 def main():
     """主函数"""
+    import sys
+    
+    # 处理命令行参数
+    if len(sys.argv) > 1:
+        if sys.argv[1] in ('--version', '-v'):
+            print(f"openclaw-feishu-deployer {__version__}")
+            sys.exit(0)
+        elif sys.argv[1] in ('--help', '-h'):
+            print_logo()
+            print(f"{Colors.CYAN}🦞 OpenClaw Feishu Deployer v{__version__}{Colors.END}\n")
+            print("用法:")
+            print("  ofd                    启动部署向导")
+            print("  ofd --version, -v      显示版本号")
+            print("  ofd --help, -h         显示帮助")
+            print("\n命令别名:")
+            print("  openclaw-feishu")
+            sys.exit(0)
+    
     print_logo()
     
     print(f"{Colors.CYAN}你好！我是你的 OpenClaw + 飞书部署小助手 🦞{Colors.END}")
