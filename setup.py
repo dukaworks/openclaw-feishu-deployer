@@ -15,7 +15,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="openclaw-feishu-deployer",
-    version="1.0.0",
+    version="1.0.1",
     author="Duka Works",
     author_email="chenzhy.bj@gmail.com",
     description="🦞 一键部署 OpenClaw + 飞书机器人的可爱工具",
